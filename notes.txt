@@ -1,0 +1,8 @@
+cd build ; and cmake --check-system-vars
+
+generator: cmake
+CONAN_PKG:: takes care of other details like include paths, so we must add only in 1 place: TARGET_LINK_LIBRARIES
+enumerating COMPONENTS does not make very much a sense - its not used by CONAN_PKG::
+
+Boost::unit_test_framework works like CONAN_PKG::boost (propagates proper include dirs) but links only one specified lib
+Boost does not work, CONAN_PKG::boost must be used

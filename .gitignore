@@ -1,0 +1,7 @@
+build/
+run_unconditional_action
+.vscode/c_cpp_properties.json
+.vscode/tasks.json
+bin/
+install_dir/
+Testing/
