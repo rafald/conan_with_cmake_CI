@@ -17,7 +17,7 @@
        TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost )
    it does not work, the following code
 
-      TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
+       TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
 must be used in case of linking with all boost libraries
 1. at the begining of CMakeLists.txt do:
 
