@@ -16,10 +16,10 @@ Include direcories wil be adjusted accordingly!
 
 do not try to use a plain Boost
 
-    TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} **Boost** )
+    TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} __Boost__ )
 does not work,
 
-    TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} **CONAN_PKG::boost** )   
+    TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} __CONAN_PKG::boost__ )   
 must be used in case of linking with all boost libraries
 
 
