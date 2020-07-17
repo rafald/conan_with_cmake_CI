@@ -2,17 +2,15 @@
 
 ## preffered configuration
 
-generator: cmake
-CMakeLists: inject
+* generator: cmake
+* CMakeLists: inject
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     conan_basic_setup(TARGETS) # 
-
-DRY, add only link dependencies like: 
+* DRY, add only link dependencies like: 
     TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost::system ) or 
     TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
 Include direcories wil be adjusted accordingly!
-
-plain Boost
+* plain Boost
     TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost )
 does not work,
     TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )   
