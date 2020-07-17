@@ -21,7 +21,7 @@
 must be used in case of linking with all boost libraries
 1. at the begining of CMakeLists.txt do:
 
-      INCLUDE InvokeConan.txt
+       INCLUDE InvokeConan.txt
    it will invoke `conan install .` automatically
 
 ## debugging
