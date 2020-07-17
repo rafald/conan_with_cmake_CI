@@ -21,18 +21,19 @@ add_executable(${PROJECT_NAME} "${SOURCES}")
 TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost::system ) # Not CONAN_PKG::boost <- all boost libs
 
 ### ### ### ### ### ### ### TESTS
-include(CTest)
+#include(CTest)
 enable_testing()
+# ADD_SUBDIRECTORY( test ) # test would have to have own CMakeFiles.txt
 
 #find_package(GTest REQUIRED) # COMPONENTS gtest gtest_main #Could NOT find GTest (missing: GTEST_LIBRARY GTEST_MAIN_LIBRARY)
 add_executable(lower_bound_test test/lower_bound_test.cpp)
-target_link_libraries(lower_bound_test PRIVATE CONAN_PKG::gtest) #${GTEST_LIBRARIES} ${CONAN_LIBS_GTEST} $GTEST_MAIN_LIBRARIES gtest gtest_main pthread
-#target_link_libraries(lower_bound_test PRIVATE CONAN_LIB::gtest_gmock)
-add_test(lower_bound lower_bound_test WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+target_link_libraries(lower_bound_test PRIVATE CONAN_PKG::gtest) 
+add_test(lower_bound_test bin/lower_bound_test)
+
 
 add_executable(topo_sort_test test/topo_sort_test.cpp)
 target_link_libraries(topo_sort_test PRIVATE Boost::unit_test_framework ) 
-add_test(topo_sort topo_sort_test)
+add_test(topo_sort bin/topo_sort_test)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
