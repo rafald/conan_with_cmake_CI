@@ -3,8 +3,7 @@
 ## preffered configuration
 
 * generator to select: **cmake**
-
-* code to inject into CMakeLists: 
+* code to inject at the beginning of CMakeLists.txt: 
 
       include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
       conan_basic_setup(TARGETS)
@@ -13,15 +12,17 @@
       TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost::system ) or 
       TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
 Include direcories wil be adjusted accordingly!
-
 * do not try to use a plain _Boost_ in 
 
       TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost )
-does not work,
+it does not work, the following code
 
      TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
 must be used in case of linking with all boost libraries
+* at the begining of CMakeLists.txt do:
 
+      INCLUDE InvokeConan.txt
+it will invoke `conan install .` automatically
 
 ## debugging
 *main dir with CMakeLists.txt*$ cmake --check-system-vars --build build
