@@ -14,12 +14,12 @@ in CMakeLists DRY - add only link dependencies like:
     TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
 Include direcories wil be adjusted accordingly!
 
-do not try to use a plain Boost
+do not try to use a plain _Boost_
 
-    TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} __Boost__ )
+    TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost )
 does not work,
 
-    TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} __CONAN_PKG::boost__ )   
+    TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )   
 must be used in case of linking with all boost libraries
 
 
