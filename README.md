@@ -25,4 +25,4 @@ must be used in case of linking with all boost libraries
    it will invoke `conan install .` automatically
 
 ## debugging
-*main dir with CMakeLists.txt*$ cmake --check-system-vars --build build
+    $> cmake --check-system-vars --build build
