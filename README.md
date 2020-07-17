@@ -1,13 +1,13 @@
 # conan integration with cmake
 
-## preffered configuration
+## Default configuration
 
 1. generator to select: **cmake**
 1. code to inject at the beginning of CMakeLists.txt: 
 
        include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
        conan_basic_setup(TARGETS)
-1. DRY - in CMakeLists add only link dependencies like: 
+1. in CMakeLists.txt add only link dependency and DRY: 
 
        TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost::system ) or 
        TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
@@ -24,5 +24,5 @@
        INCLUDE(invoke_conan.cmake)
    it will invoke `conan install .` automatically
 
-## debugging
+## resolving issues tips
     $> cmake --check-system-vars --build build
