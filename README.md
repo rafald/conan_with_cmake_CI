@@ -4,8 +4,10 @@
 
 * generator: cmake
 * CMakeLists: inject
-    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-    conan_basic_setup(TARGETS) # 
+
+     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+     
+     conan_basic_setup(TARGETS)`
 * DRY, add only link dependencies like: 
     TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost::system ) or 
     TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
