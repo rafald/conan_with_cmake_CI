@@ -1,0 +1,52 @@
+name: CMake
+on: [push]
+env:
+  BUILD_TYPE: Release # Release, Debug, RelWithDebInfo, etc.
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, windows-2016] #, macOS-latest] #fails because of SetupHunter - version not present, although first time build succeeded - why ???
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Create Build Environment
+      shell: bash 
+      run: |
+       cmake --version
+       cmake -E make_directory ${{runner.workspace}}/build
+       echo $PATH
+       pip3 install conan
+       export PATH=$PATH:/home/runner/.local/bin
+       echo $PATH
+       conan --version       
+
+    - name: Cache Hunter
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-hunter-CMake
+      with:
+        path: ~/.hunter/
+        key: ${{ matrix.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/CMakeLists.txt') }} #key: ${{ runner.os }}-
+        restore-keys: |
+          ${{ matrix.os }}-build-${{ env.cache-name }}-
+          ${{ matrix.os }}-build-
+          ${{ matrix.os }}-
+
+    - name: Configure CMake
+      shell: bash # Use a bash shell so we can use the same syntax for environment variable access regardless of the host operating system
+      working-directory: ${{runner.workspace}}/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE # -DHUNTER_STATUS_DEBUG=ON # -S -DCMAKE_PROJECT_INCLUDE_BEFORE:STRING=SetupHunter.cmake
+
+    - name: Build
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: cmake --build . --config $BUILD_TYPE # You can specify a specific target with "--target <NAME>"
+
+    - name: Test
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: ctest -C $BUILD_TYPE # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
