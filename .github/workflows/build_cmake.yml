@@ -13,17 +13,22 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
     - name: Create Build Environment
       shell: bash 
       run: |
        cmake --version
        cmake -E make_directory ${{runner.workspace}}/build
        echo $PATH
-       pip3 install wheel setuptools
-       pip3 install --user conan
+       pip3 install wheel setuptools 
+       pip3 install conan
        #sudo ln -s ~/.local/bin/conan /usr/local/bin/conan
-       export PATH=$PATH:/home/runner/.local/bin
-       echo $PATH
+       #export PATH=$PATH:/home/runner/.local/bin
+       #echo $PATH
        which conan
        conan --version       
 
@@ -43,8 +48,8 @@ jobs:
       shell: bash # Use a bash shell so we can use the same syntax for environment variable access regardless of the host operating system
       working-directory: ${{runner.workspace}}/build
       run: |
-       echo $PATH
-       export PATH=$PATH:/home/runner/.local/bin
+       #echo $PATH
+       #export PATH=$PATH:/home/runner/.local/bin
        which conan
        readlink -f conan
        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE # -DHUNTER_STATUS_DEBUG=ON # -S -DCMAKE_PROJECT_INCLUDE_BEFORE:STRING=SetupHunter.cmake
