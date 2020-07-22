@@ -19,17 +19,18 @@ jobs:
        cmake --version
        cmake -E make_directory ${{runner.workspace}}/build
        echo $PATH
+       pip3 install wheel setuptools
        pip3 install conan
        export PATH=$PATH:/home/runner/.local/bin
        echo $PATH
        conan --version       
 
-    - name: Cache Hunter
+    - name: Cache Conan
       uses: actions/cache@v2
       env:
-        cache-name: cache-hunter-CMake
+        cache-name: cache-conan-CMake
       with:
-        path: ~/.hunter/
+        path: ~/.conan/
         key: ${{ matrix.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/CMakeLists.txt') }} #key: ${{ runner.os }}-
         restore-keys: |
           ${{ matrix.os }}-build-${{ env.cache-name }}-
