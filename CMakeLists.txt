@@ -9,7 +9,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON) #from command line $> export VERBOSE=1 cmake ...
 
 #SET (Boost_ADDITIONAL_VERSIONS "1.67" "1.67.0" "1.71") 
 #set(Boost_DEBUG 1)
-find_package(Boost 1.72 COMPONENTS unit_test_framework system REQUIRED) # CONFIG  mode does not work 
+find_package(Boost 1.73.0 COMPONENTS unit_test_framework system REQUIRED) # CONFIG  mode does not work 
 
 include_directories(.)
 
