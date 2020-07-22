@@ -45,7 +45,7 @@ jobs:
           ${{ matrix.os }}-
 
     - name: Configure CMake
-      shell: bash # Use a bash shell so we can use the same syntax for environment variable access regardless of the host operating system
+      #shell: bash # Use a bash shell so we can use the same syntax for environment variable access regardless of the host operating system
       working-directory: ${{runner.workspace}}/build
       run: |
        #echo $PATH
@@ -56,7 +56,7 @@ jobs:
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
-      shell: bash
+      #shell: bash
       run: cmake --build . --config $BUILD_TYPE # You can specify a specific target with "--target <NAME>"
 
     - name: Test
