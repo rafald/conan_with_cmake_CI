@@ -47,7 +47,7 @@ jobs:
     - name: Configure CMake
       #shell: bash # Use a bash shell so we can use the same syntax for environment variable access regardless of the host operating system
       working-directory: ${{runner.workspace}}/build
-      run: cmake -S $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE # -DHUNTER_STATUS_DEBUG=ON # -S -DCMAKE_PROJECT_INCLUDE_BEFORE:STRING=SetupHunter.cmake
+      run: cmake -S .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE # -DHUNTER_STATUS_DEBUG=ON # -S -DCMAKE_PROJECT_INCLUDE_BEFORE:STRING=SetupHunter.cmake
        #echo $PATH
        #export PATH=$PATH:/home/runner/.local/bin
        #which conan
