@@ -8,7 +8,9 @@ conan_basic_setup(TARGETS) #
 set(CMAKE_VERBOSE_MAKEFILE ON) #from command line $> export VERBOSE=1 cmake ...
 
 #SET (Boost_ADDITIONAL_VERSIONS "1.67" "1.67.0" "1.71") 
-#set(Boost_DEBUG 1)
+set(Boost_NO_SYSTEM_PATHS ON)
+set(Boost_DEBUG 1)
+set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost 1.73.0 COMPONENTS system REQUIRED) # CONFIG  mode does not work 
 find_package(Boost 1.73.0 COMPONENTS unit_test_framework REQUIRED) # CONFIG  mode does not work 
 
