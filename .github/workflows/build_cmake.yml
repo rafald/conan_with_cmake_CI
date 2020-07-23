@@ -43,7 +43,6 @@ jobs:
           ${{ matrix.os }}-build-${{ env.cache-name }}-
           ${{ matrix.os }}-build-
           ${{ matrix.os }}-
-      shell: bash 
 
     - name: Configure CMake
       shell: bash # MUST BE BASH TO SUCCEED!!! Use a bash shell so we can use the same syntax for environment variable access regardless of the host operating system
