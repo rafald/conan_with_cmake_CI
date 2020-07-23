@@ -19,7 +19,7 @@ jobs:
         python-version: '3.x'
 
     - name: Create Build Environment
-      #shell: bash 
+      shell: bash 
       run: |
        cmake --version
        cmake -E make_directory ${{runner.workspace}}/build
@@ -46,7 +46,7 @@ jobs:
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
-      #shell: bash
+      shell: bash # the step fails if missing!
       run: cmake --build . --config $BUILD_TYPE # You can specify a specific target with "--target <NAME>"
 
     - name: Test
