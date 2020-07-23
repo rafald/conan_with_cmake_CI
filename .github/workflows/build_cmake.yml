@@ -17,9 +17,10 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
+      shell: bash 
 
     - name: Create Build Environment
-      #shell: bash 
+      shell: bash 
       run: |
        cmake --version
        cmake -E make_directory ${{runner.workspace}}/build
@@ -43,13 +44,12 @@ jobs:
           ${{ matrix.os }}-build-${{ env.cache-name }}-
           ${{ matrix.os }}-build-
           ${{ matrix.os }}-
+      shell: bash 
 
     - name: Configure CMake
       shell: bash # MUST BE BASH TO SUCCEED!!! Use a bash shell so we can use the same syntax for environment variable access regardless of the host operating system
       working-directory: ${{runner.workspace}}/build
-      run: |
-       echo "GITHUB_WORKSPACE is: $GITHUB_WORKSPACE"
-       cmake -S $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE # -DHUNTER_STATUS_DEBUG=ON # -S -DCMAKE_PROJECT_INCLUDE_BEFORE:STRING=SetupHunter.cmake
+      run: cmake -S $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE # -DHUNTER_STATUS_DEBUG=ON # -S -DCMAKE_PROJECT_INCLUDE_BEFORE:STRING=SetupHunter.cmake
        #echo $PATH
        #export PATH=$PATH:/home/runner/.local/bin
        #which conan
