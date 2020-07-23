@@ -1,7 +1,7 @@
 name: CMake
 on: [push]
 env:
-  BUILD_TYPE: Release # Release, Debug, RelWithDebInfo, etc.
+  BUILD_TYPE: RelWithDebInfo # Release, Debug, RelWithDebInfo, etc.
 jobs:
   build:
     runs-on: ${{ matrix.os }}
