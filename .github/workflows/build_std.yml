@@ -1,0 +1,53 @@
+name: C/C++ CI std
+on: [push]
+env:
+  BUILD_TYPE: Release # Release, Debug, RelWithDebInfo, etc.
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, windows-2016]
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+        
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Create Build Environment
+      #shell: bash # ON W$ FOR SOME F.REASON using bash in this step causes a failure in configure step
+      run: |
+       cmake --version
+       #cmake -E make_directory ${{runner.workspace}}/build
+       python -m pip install --upgrade pip
+       pip3 install wheel setuptools 
+       pip3 install conan
+
+    - name: Cache Conan
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-conan-std
+      with:
+        path: ~/.conan/
+        key: ${{ matrix.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/CMakeLists.txt') }} #key: ${{ runner.os }}-
+        restore-keys: |
+          ${{ matrix.os }}-build-${{ env.cache-name }}-
+          ${{ matrix.os }}-build-
+          ${{ matrix.os }}-
+
+    
+    - name: configure
+      shell: bash
+      run: mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE 
+
+    - name: build
+      shell: bash
+      run: cmake --build build --config $BUILD_TYPE
+
+    - name: test
+      shell: bash
+      run: cd build && ctest -C $BUILD_TYPE

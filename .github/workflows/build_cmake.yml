@@ -19,7 +19,7 @@ jobs:
         python-version: '3.x'
 
     - name: Create Build Environment
-      #shell: bash 
+      #shell: bash # ON W$ FOR SOME F.REASON using bash in this step causes a failure in configure step
       run: |
        cmake --version
        cmake -E make_directory ${{runner.workspace}}/build
