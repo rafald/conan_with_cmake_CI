@@ -8,6 +8,10 @@ conan_basic_setup(TARGETS) #
 set(CMAKE_VERBOSE_MAKEFILE ON) #from command line $> export VERBOSE=1 cmake ...
 variable_watch(CMAKE_BUILD_TYPE) # This will print to the standard error every access to this variable.
 
+set(CMAKE_CXX_STANDARD 17) ## 11 or 14 !!
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF) ## on g++ this ensures: -std=c++11 and not -std=gnu++11
+
 #SET (Boost_ADDITIONAL_VERSIONS "1.67" "1.67.0" "1.71") 
 set(Boost_NO_SYSTEM_PATHS ON)
 #set(Boost_DEBUG 1)
