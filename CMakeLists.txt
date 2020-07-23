@@ -1,18 +1,18 @@
 cmake_minimum_required(VERSION 3.17.0)
 project(algos VERSION 0.1.0)
 
-INCLUDE(invoke_conan.cmake)
+INCLUDE(InvokeConan.cmake)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS) # 
 
 set(CMAKE_VERBOSE_MAKEFILE ON) #from command line $> export VERBOSE=1 cmake ...
+variable_watch(CMAKE_BUILD_TYPE) # This will print to the standard error every access to this variable.
 
 #SET (Boost_ADDITIONAL_VERSIONS "1.67" "1.67.0" "1.71") 
 set(Boost_NO_SYSTEM_PATHS ON)
-set(Boost_DEBUG 1)
+#set(Boost_DEBUG 1)
 set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost 1.73.0 COMPONENTS system REQUIRED) # CONFIG  mode does not work 
-find_package(Boost 1.73.0 COMPONENTS unit_test_framework REQUIRED) # CONFIG  mode does not work 
+find_package(Boost EXACT 1.73.0 COMPONENTS system unit_test_framework REQUIRED) # CONFIG  mode does not work 
 
 include_directories(.)
 

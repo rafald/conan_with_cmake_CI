@@ -6,8 +6,7 @@
 #include "algos/utils.h" //TODO private header
 #include "algos/lower_bound.h"
 
-namespace
-{
+namespace algos { namespace {
   TEST(lowerbound, int_native_array)
   {
     int data[] = {
@@ -25,10 +24,10 @@ namespace
   TEST(lowerbound, int_std_array)
   {
     std::array<char,10> data{ "ab" "defghij" }; data[9]='k';
-    EXPECT_EQ(*lower_bound(data.begin(), data.end(), 'd') , 'd');
-    EXPECT_EQ(*lower_bound(data.begin(), data.end(), 'c') , 'd');
+    EXPECT_EQ(*algos::lower_bound(data.begin(), data.end(), 'd') , 'd');
+    EXPECT_EQ(*algos::lower_bound(data.begin(), data.end(), 'c') , 'd');
   }
-} // namespace
+}} // namespace
 
 #if 0
 #include "gtest/gtest.h"
