@@ -17,7 +17,6 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-      shell: bash 
 
     - name: Create Build Environment
       shell: bash 
