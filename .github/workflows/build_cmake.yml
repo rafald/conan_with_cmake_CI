@@ -23,15 +23,9 @@ jobs:
       run: |
        cmake --version
        cmake -E make_directory ${{runner.workspace}}/build
-       echo $PATH
        python -m pip install --upgrade pip
        pip3 install wheel setuptools 
        pip3 install conan
-       #sudo ln -s ~/.local/bin/conan /usr/local/bin/conan
-       #export PATH=$PATH:/home/runner/.local/bin
-       #echo $PATH
-       #which conan
-       #conan --version       
 
     - name: Cache Conan
       uses: actions/cache@v2
@@ -49,14 +43,10 @@ jobs:
       shell: bash # MUST BE BASH TO SUCCEED!!! Use a bash shell so we can use the same syntax for environment variable access regardless of the host operating system
       working-directory: ${{runner.workspace}}/build
       run: cmake -S $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE # -DHUNTER_STATUS_DEBUG=ON # -S -DCMAKE_PROJECT_INCLUDE_BEFORE:STRING=SetupHunter.cmake
-       #echo $PATH
-       #export PATH=$PATH:/home/runner/.local/bin
-       #which conan
-       #readlink -f conan
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
-      #shell: bash
+      shell: bash
       run: cmake --build . --config $BUILD_TYPE # You can specify a specific target with "--target <NAME>"
 
     - name: Test
