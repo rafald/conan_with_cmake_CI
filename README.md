@@ -18,9 +18,11 @@ Regarding github action, it does install conan in one of the cmake's configurati
        conan_basic_setup(TARGETS)
 1. in CMakeLists.txt add the only dependency: 
 
-       TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost::system ) or 
+       TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost::system ) 
+   or 
+   
        TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
-   Include direcories wil be adjusted accordingly!
+   for all boost libraries. Include directories will be adjusted accordingly!
 1. do not try to use a plain _Boost_ in 
 
        TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost )
