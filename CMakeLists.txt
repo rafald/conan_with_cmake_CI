@@ -3,10 +3,10 @@ project(algos VERSION 0.1.0)
 
 INCLUDE(InvokeConan.cmake)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS) # 
+conan_basic_setup(TARGETS)
 
 set(CMAKE_VERBOSE_MAKEFILE ON) #from command line $> export VERBOSE=1 cmake ...
-variable_watch(CMAKE_BUILD_TYPE) # This will print to the standard error every access to this variable.
+#variable_watch(CMAKE_BUILD_TYPE) # This will print to the standard error every access to this variable.
 
 set(CMAKE_CXX_STANDARD 17) ## 11 or 14 !!
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -18,7 +18,7 @@ set(Boost_NO_SYSTEM_PATHS ON)
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost EXACT 1.73.0 COMPONENTS system unit_test_framework REQUIRED) # CONFIG  mode does not work 
 
-include_directories(.)
+include_directories(PRIVATE .)
 
 FILE ( GLOB SOURCES  "${PROJECT_SOURCE_DIR}/src/*.cpp" )
  

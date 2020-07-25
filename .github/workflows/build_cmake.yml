@@ -1,4 +1,4 @@
-name: CMake
+name: C/C++ CI v2
 on: [push]
 env:
   BUILD_TYPE: Release # Release, Debug, RelWithDebInfo, etc.
@@ -21,7 +21,6 @@ jobs:
     - name: Create Build Environment
       #shell: bash # ON W$ FOR SOME F.REASON using bash in this step causes a failure in configure step
       run: |
-       cmake --version
        cmake -E make_directory ${{runner.workspace}}/build
        python -m pip install --upgrade pip
        pip3 install wheel setuptools 
