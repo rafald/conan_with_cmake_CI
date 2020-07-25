@@ -2,7 +2,7 @@
 
 Prerequisites are installed CMake builder and conan package manager
 
-Github action does install conan in one of the cmake's configuration steps
+Regarding github action, it does install conan in one of the cmake's configuration steps
 
 ## How to convert your cmake project to use conan package manager
 
