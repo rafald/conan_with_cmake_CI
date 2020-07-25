@@ -11,6 +11,7 @@ Regarding github action, it does install conan in one of the cmake's configurati
 
        INCLUDE(invoke_conan.cmake)
    it will invoke `conan install .` automatically
+   
 1.right after previous include call inject: 
 
        include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
