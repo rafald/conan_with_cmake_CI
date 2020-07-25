@@ -1,4 +1,4 @@
-# conan integration with cmake and github actions to perform C/C++ CI
+# conan integration with cmake plus github actions to perform C/C++ CI
 
 Prerequisites are installed CMake builder and conan package manager
 
