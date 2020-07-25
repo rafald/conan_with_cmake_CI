@@ -1,5 +1,7 @@
 ![C/C++ CI](https://github.com/rafald/conan_with_cmake_CI/workflows/C/C++%20CI/badge.svg)
 
+![C/C++ CI v2](https://github.com/rafald/conan_with_cmake_CI/workflows/C/C++%20CI%20v2/badge.svg)
+
 # conan integration with cmake plus github actions to perform C/C++ CI
 
 Prerequisites are installed CMake builder and conan package manager
