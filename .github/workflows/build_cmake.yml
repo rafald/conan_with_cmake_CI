@@ -38,6 +38,9 @@ jobs:
           ${{ matrix.os }}-build-
           ${{ matrix.os }}-
 
+    - name: ninja
+      uses: seanmiddleditch/gha-setup-ninja@master
+
     - name: Configure CMake
       shell: bash # MUST BE BASH TO SUCCEED!!! Use a bash shell so we can use the same syntax for environment variable access regardless of the host operating system
       working-directory: ${{runner.workspace}}/build
