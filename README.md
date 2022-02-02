@@ -4,9 +4,9 @@
 
 # Github continuous integration (via github actions) of tiny C++ project using conan package manager with cmake builder
 
-Prerequisites are installed CMake builder and conan package manager
+Prerequisites are installed CMake builder (conan package manager is installed by cmake configuration step).
 
-Regarding github action, it does install conan in one of the cmake's configuration steps
+Github action does install conan in one of the cmake's configuration steps
 
 ## How to convert your cmake project to use conan package manager
 
@@ -29,7 +29,7 @@ Regarding github action, it does install conan in one of the cmake's configurati
 1. do not try to use a plain _Boost_ in 
 
        TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} Boost )
-   it does not work, the following code
+   it does not work, the following code is correct
 
        TARGET_LINK_LIBRARIES ( ${PROJECT_NAME} CONAN_PKG::boost )
  
