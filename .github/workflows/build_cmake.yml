@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, windows-2016] #, macOS-latest] #fails because of SetupHunter - version not present, although first time build succeeded - why ???
+        os: [ubuntu-latest, windows-2016] #TOfix windows-latest    , macOS-latest] #fails because of SetupHunter - version not present, although first time build succeeded - why ???
 
     steps:
     - name: Checkout
