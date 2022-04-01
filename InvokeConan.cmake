@@ -16,7 +16,7 @@ conan_add_remote(NAME bincrafters
                  URL https://api.bintray.com/conan/bincrafters/public-conan
                  VERIFY_SSL True)
 conan_cmake_run(CONANFILE conanfile.txt #REQUIRES boost/1.73.0 gtest/1.10.0
-                BASIC_SETUP CMAKE_TARGETS
+                BASIC_SETUP #CMAKE_TARGETS
                 BUILD missing
                 SETTINGS compiler.cppstd=17
                 ENV env_var=value
